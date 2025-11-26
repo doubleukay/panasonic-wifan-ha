@@ -1,0 +1,22 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Set up Panasonic WIFAN",
+                "description": "Enter your Panasonic account credentials to connect to your WIFANs.",
+                "data": {
+                    "username": "Email Address",
+                    "password": "Password"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Failed to connect to Panasonic API. Please check your credentials.",
+            "no_fans": "No fans found on your Panasonic account",
+            "unknown": "Unexpected error occurred"
+        },
+        "abort": {
+            "already_configured": "Panasonic WIFAN is already configured"
+        }
+    }
+}
