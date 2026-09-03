@@ -221,7 +221,7 @@ class PanasonicWiFiFan(FanEntity):  # type: ignore[misc]
         """
         try:
             state = await self._api.get_state_for_fan(self._fan)
-            self._update_state_from_fan_state(state)
+            self._update_state_from_fan_state(state.fan)
         except Exception as err:
             _LOGGER.error("Error updating %s: %s", self._attr_name, err)
 

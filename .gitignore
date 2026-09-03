@@ -220,3 +220,9 @@ __marimo__/
 .id_token
 *.swp
 .DS_Store
+
+# Field sweeps from scripts/sweep_ids.py — local captures, they name your rooms
+/light-off.json
+/light-on.json
+/low-range.json
+/*-sweep.json

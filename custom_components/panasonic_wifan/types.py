@@ -66,6 +66,38 @@ class FanState:
     yuragi: bool
 
 
+@dataclass(frozen=True)
+class LightState:
+    """State of the light fitted to a fan, when it has one.
+
+    The light has two modes. In normal mode ``brightness`` and ``color_temp``
+    apply; in sleep mode, which dims further than the normal range allows,
+    ``sleep_brightness`` does. All three are percentages, with ``color_temp``
+    running from warm at 0 to daylight at 100. The device keeps every value
+    whichever mode is active, so switching modes does not lose the other one's
+    setting.
+    """
+
+    is_on: bool
+    brightness: int
+    color_temp: int = 0
+    sleep: bool = False
+    sleep_brightness: int = 1
+
+    @property
+    def active_brightness(self) -> int:
+        """The brightness that the current mode actually uses."""
+        return self.sleep_brightness if self.sleep else self.brightness
+
+
+@dataclass(frozen=True)
+class DeviceState:
+    """Everything a single state poll told us about one appliance."""
+
+    fan: FanState
+    light: LightState | None = None
+
+
 @dataclass
 class AuthToken:
     access_token: str
