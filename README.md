@@ -35,6 +35,22 @@ A native Home Assistant integration for Panasonic Malaysia WiFi fans. This integ
 
 Your fans will be automatically discovered and added as devices.
 
+## Releasing
+
+```sh
+make bump
+```
+
+Bumps the patch version in `manifest.json`, commits and tags it, pushes the commit and tag, and creates the GitHub release. It must be run from an up-to-date `main` (checked by `make preflight`).
+
+To re-run only the release step (for example if `gh` failed), use `make release`, optionally with custom notes: `make release NOTES_FILE=notes.md`.
+
+If the push fails after the bump, undo the local bump before retrying (replace `vX.Y.Z` with the new tag):
+
+```sh
+git tag -d vX.Y.Z && git reset --hard origin/main
+```
+
 ## Support
 
 For issues and feature requests, please use the [GitHub issue tracker](https://github.com/doubleukay/panasonic-wifan-ha/issues).
